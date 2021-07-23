@@ -1,0 +1,30 @@
+﻿@model  StoreAppWebUI.Models.StoreFrontVM
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h3>Add a Store</h3>
+
+    <div>
+        <form asp-action="AddStore">
+            <div class="mb-3">
+                <label asp-for="StoreName" class="form-label">Store Name</label>
+                <input asp-for="StoreName" type="text" class="form-control">
+                <span asp-validation-for="StoreName" class="text-danger">The Store Name field is required.</span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="StoreAddress" class="form-label">Store Address</label>
+                <input asp-for="StoreAddress" type="text" class="form-control">
+                <span asp-validation-for="StoreAddress" class="text-danger">The Store Address field is required.</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <a type="button" class="btn btn-danger" asp-action="Index" style="position:relative; top:15px">Return to Store List</a>
+    </div>
+</body>
+</html>
