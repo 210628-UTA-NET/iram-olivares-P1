@@ -10,6 +10,8 @@
         @Model.StoreName
     </h3>
 
+    <a>@Html.ActionLink("Replenish Inventory", "ReplenishInventory", new { p_storeID = Model.StoreFrontID }, new { @class = "btn btn-primary" })</a>
+
     <table class="table table-striped table-hover" style="position:relative; top: 15px">
         <thead>
             <tr>
@@ -73,7 +75,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @foreach(var item in order.OrderItems) 
+                                            @foreach (var item in order.OrderItems)
                                             {
                                                 <tr>
                                                     <td>@item.OrderItemID</td>
@@ -87,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-</td>
+                    </td>
                 </tr>
             }
 

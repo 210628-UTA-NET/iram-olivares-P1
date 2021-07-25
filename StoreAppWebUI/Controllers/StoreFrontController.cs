@@ -63,5 +63,18 @@ namespace StoreAppWebUI.Controllers
 
             return View(store);
         }
+
+        public IActionResult ReplenishInventory(int p_storeID)
+        {
+            StoreFrontVM store = new StoreFrontVM(_storeAppBL.GetOneStore(p_storeID));
+            store.LineItems = _storeAppBL.ViewInventory(p_storeID);
+            return View(store);
+        }
+
+        public IActionResult AddAmount(int p_storeID, int p_itemID, int p_amount)
+        {
+            LineItem replenishedItem = _storeAppBL.ReplenishInventory(p_itemID, p_amount);
+            return RedirectToAction(nameof(ReplenishInventory), new { p_storeID });
+        }
     }
 }
