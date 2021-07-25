@@ -58,7 +58,7 @@ namespace SABL
             return _repo.GetProductPrice(p_productID);
         }
 
-        public LineItem GetOneItem(int p_itemID)
+        public Product GetOneItem(int p_itemID)
         {
             return _repo.GetOneItem(p_itemID);
         }

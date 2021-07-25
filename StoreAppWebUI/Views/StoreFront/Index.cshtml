@@ -18,14 +18,18 @@
                 <th>Address</th>
             </tr>
         </thead>
+
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var store in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.StoreName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.StoreAddress)</td>
+                    <td>
+                        @Html.ActionLink(@store.StoreName, "InspectStore", new { p_storeID = store.StoreFrontID }, new { style = "text-decoration:underline"})
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => store.StoreAddress)</td>
                 </tr>
             }
+
         </tbody>
     </table>
 

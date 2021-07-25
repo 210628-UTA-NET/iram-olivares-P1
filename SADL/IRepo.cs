@@ -81,7 +81,7 @@ namespace SADL
         /// <param name="p_itemName"> Name of the item requested </param>
         /// <param name="p_store"> Specified store to search through </param>
         /// <returns> Searches through the database for an item and store match </returns>
-        LineItem GetOneItem(int p_itemID);
+        Product GetOneItem(int p_itemID);
 
         /// <summary>
         /// Allows the user to replenish an item in a store. Will also allow for removal of items if a Customer places an order

@@ -37,9 +37,18 @@ namespace SADL
 
         public List<Order> GetStoreOrders(int p_storeID)
         {
-            return _context.Orders
+            var orders = _context.Orders
                     .Where(order => order.StoreFrontID == p_storeID)
                     .Select(order => order).ToList();
+
+            foreach (Order order in orders)
+            {
+                order.OrderItems = _context.OrderItems
+                                    .Where(item => item.OrderID == order.OrderID)
+                                    .Select(item => item).ToList();
+            }
+
+            return orders;
         }
 
         public Order PlaceOrder(Order p_order)
@@ -67,9 +76,9 @@ namespace SADL
             return product.ProductPrice;
         }
 
-        public LineItem GetOneItem(int p_itemID)
+        public Product GetOneItem(int p_itemID)
         {
-            return _context.LineItems.Find(p_itemID);
+            return _context.Products.Find(p_itemID);
         }
 
         public StoreFront GetOneStore(int p_storeID)
@@ -79,7 +88,7 @@ namespace SADL
 
         public LineItem ReplenishInventory(int p_itemID, int p_amount)
         {
-            var item = this.GetOneItem(p_itemID);
+            var item = _context.LineItems.Find(p_itemID);
 
             item.Quantity += p_amount;
 
@@ -90,9 +99,16 @@ namespace SADL
         
         public List<LineItem> ViewInventory(int p_storeID)
         {
-            return _context.LineItems
+            var inventory = _context.LineItems
                     .Where(item => item.StoreFrontID == p_storeID)
                     .Select(item => item).ToList();
+
+            foreach (LineItem item in inventory)
+            {
+                item.Product = this.GetOneItem(item.ProductID);
+            }
+            
+            return inventory;
         }
 
         public Product AddProduct(Product p_product)

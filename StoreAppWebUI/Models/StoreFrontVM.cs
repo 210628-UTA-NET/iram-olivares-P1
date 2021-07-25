@@ -1,4 +1,6 @@
 using SAModels;
+using SABL;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StoreAppWebUI.Models
@@ -21,6 +23,8 @@ namespace StoreAppWebUI.Models
         public string StoreName { get; set; }
         [Required]
         public string StoreAddress { get; set; }
+        public List<LineItem> LineItems;
+        public List<Order> Orders;
 
     }
 }

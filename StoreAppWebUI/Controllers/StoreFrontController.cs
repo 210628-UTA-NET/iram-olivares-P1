@@ -54,5 +54,14 @@ namespace StoreAppWebUI.Controllers
             }
             return View();
         }
+
+        public IActionResult InspectStore(int p_storeID)
+        {
+            StoreFrontVM store = new StoreFrontVM(_storeAppBL.GetOneStore(p_storeID));
+            store.LineItems = _storeAppBL.ViewInventory(p_storeID);
+            store.Orders = _storeAppBL.GetStoreOrders(p_storeID);
+
+            return View(store);
+        }
     }
 }

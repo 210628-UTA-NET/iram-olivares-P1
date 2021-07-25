@@ -20,7 +20,7 @@ namespace SADL
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<StoreFront> Stores { get; set; }
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder p_options)
+    /*    protected override void OnConfiguring(DbContextOptionsBuilder p_options)
             => p_options.UseSqlServer("Server=tcp:ieo.database.windows.net,1433;Initial Catalog=ieoDemoDB;Persist Security Info=False;User ID=ieolivares;Password=RlrrLrll97;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 */
         protected override void OnModelCreating(ModelBuilder p_modelBuilder)

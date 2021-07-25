@@ -250,9 +250,9 @@ namespace SATest
                 IRepo repo = new Repo(context);
                 int itemID = 4;
 
-                LineItem foundItem = repo.GetOneItem(itemID);
+                Product foundItem = repo.GetOneItem(itemID);
 
-                Assert.Equal(400, foundItem.Quantity);
+                Assert.Equal(4.44, foundItem.ProductPrice);
             }
         }
 
@@ -427,26 +427,6 @@ namespace SATest
                 double price = repo.GetProductPrice(productID);
 
                 Assert.Equal(1.11, price);
-            }
-        }
-
-        [Fact]
-        public void AddProductTest()
-        {
-            using (var context = new StoreAppDBContext(_options))
-            {
-                IRepo repo = new Repo(context);
-                Product newProduct = new Product()
-                {
-                    ProductName = "Tortilla #5",
-                    ProductPrice = 5.55,
-                    ProductDescription = "5 Tortillas"
-                };
-
-                Product addedProduct = repo.AddProduct(newProduct);
-
-                Assert.NotNull(addedProduct);
-                Assert.Equal(5, context.Products.Count());
             }
         }
     }
