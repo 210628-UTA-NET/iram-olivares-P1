@@ -28,19 +28,19 @@ namespace SABL
             return _repo.GetOneCustomer(p_customerEmail);
         }
 
-        public List<Order> GetCustomerOrders(Customer p_customer)
+        public List<Order> GetCustomerOrders(int p_customerID)
         {
-            return _repo.GetCustomerOrders(p_customer);
+            return _repo.GetCustomerOrders(p_customerID);
         }
 
-        public List<Order> GetStoreOrders(StoreFront p_store)
+        public List<Order> GetStoreOrders(int p_storeID)
         {
-            return _repo.GetStoreOrders(p_store);
+            return _repo.GetStoreOrders(p_storeID);
         }
 
-        public Order PlaceOrder(Customer p_customer, StoreFront p_store, Order p_order)
+        public Order PlaceOrder(Order p_order)
         {
-            return _repo.PlaceOrder(p_customer, p_store, p_order);
+            return _repo.PlaceOrder(p_order);
         }
 
         public List<StoreFront> GetAllStores()
@@ -53,28 +53,33 @@ namespace SABL
             return _repo.AddStore(p_store);
         }
 
-        public double GetItemPrice(LineItem p_item)
+        public double GetProductPrice(int p_productID)
         {
-            return _repo.GetItemPrice(p_item);
+            return _repo.GetProductPrice(p_productID);
         }
 
-        public LineItem GetOneItem(string p_itemName, StoreFront p_store)
+        public LineItem GetOneItem(int p_itemID)
         {
-            return _repo.GetOneItem(p_itemName, p_store);
+            return _repo.GetOneItem(p_itemID);
         }
 
         public StoreFront GetOneStore(int p_storeID)
         {
             return _repo.GetOneStore(p_storeID);
         }
-        public List<LineItem> ReplenishInventory(StoreFront p_store, LineItem p_item, int p_amount)
+        public LineItem ReplenishInventory(int p_itemID, int p_amount)
         {
-            return _repo.ReplenishInventory(p_store, p_item, p_amount);
+            return _repo.ReplenishInventory(p_itemID, p_amount);
         }
 
-        public List<LineItem> ViewInventory(StoreFront p_store)
+        public List<LineItem> ViewInventory(int p_storeID)
         {
-            return _repo.ViewInventory(p_store);
+            return _repo.ViewInventory(p_storeID);
+        }
+
+        public Product AddProduct(Product p_product)
+        {
+            return _repo.AddProduct(p_product);
         }
     }
 }

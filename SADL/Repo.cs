@@ -14,31 +14,39 @@ namespace SADL
         
         public List<Customer> GetAllCustomers()
         {
-            throw new System.NotImplementedException();
+            return _context.Customers.Select(customer => customer).ToList();
         }
         public Customer AddCustomer(Customer p_customer)
         {
-            throw new System.NotImplementedException();
+            _context.Customers.Add(p_customer);
+            _context.SaveChanges();
+            return p_customer;
         }
 
         public Customer GetOneCustomer(string p_customerEmail)
         {
-            throw new System.NotImplementedException();
+            return _context.Customers.FirstOrDefault(customer => customer.CustomerEmail == p_customerEmail);
         }
 
-        public List<Order> GetCustomerOrders(Customer p_customer)
+        public List<Order> GetCustomerOrders(int p_customerID)
         {
-            throw new System.NotImplementedException();
+            return _context.Orders
+                    .Where(order => order.CustomerID == p_customerID)
+                    .Select(order => order).ToList();
         }
 
-        public List<Order> GetStoreOrders(StoreFront p_store)
+        public List<Order> GetStoreOrders(int p_storeID)
         {
-            throw new System.NotImplementedException();
+            return _context.Orders
+                    .Where(order => order.StoreFrontID == p_storeID)
+                    .Select(order => order).ToList();
         }
 
-        public Order PlaceOrder(Customer p_customer, StoreFront p_store, Order p_order)
+        public Order PlaceOrder(Order p_order)
         {
-            throw new System.NotImplementedException();
+            _context.Orders.Add(p_order);
+            _context.SaveChanges();
+            return p_order;
         }
 
         public List<StoreFront> GetAllStores()
@@ -53,29 +61,45 @@ namespace SADL
             return p_store;
         }
 
-        public double GetItemPrice(Item p_item)
+        public double GetProductPrice(int p_productID)
         {
-            throw new System.NotImplementedException();
+            var product = _context.Products.Find(p_productID);
+            return product.ProductPrice;
         }
 
-        public LineItem GetOneItem(string p_itemName, StoreFront p_store)
+        public LineItem GetOneItem(int p_itemID)
         {
-            throw new System.NotImplementedException();
+            return _context.LineItems.Find(p_itemID);
         }
 
         public StoreFront GetOneStore(int p_storeID)
         {
-            throw new System.NotImplementedException();
+            return _context.Stores.Find(p_storeID);
         }
 
-        public List<LineItem> ReplenishInventory(StoreFront p_store, LineItem p_item, int p_amount)
+        public LineItem ReplenishInventory(int p_itemID, int p_amount)
         {
-           throw new System.NotImplementedException();
+            var item = this.GetOneItem(p_itemID);
+
+            item.Quantity += p_amount;
+
+            _context.LineItems.Update(item);
+            _context.SaveChanges();
+            return item;
         }
         
-        public List<LineItem> ViewInventory(StoreFront p_store)
+        public List<LineItem> ViewInventory(int p_storeID)
         {
-            throw new System.NotImplementedException();
+            return _context.LineItems
+                    .Where(item => item.StoreFrontID == p_storeID)
+                    .Select(item => item).ToList();
+        }
+
+        public Product AddProduct(Product p_product)
+        {
+            _context.Products.Add(p_product);
+            _context.SaveChanges();
+            return p_product;
         }
     }
 }

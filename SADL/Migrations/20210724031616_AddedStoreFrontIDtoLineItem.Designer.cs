@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SADL;
 
 namespace SADL.Migrations
 {
     [DbContext(typeof(StoreAppDBContext))]
-    partial class StoreAppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210724031616_AddedStoreFrontIDtoLineItem")]
+    partial class AddedStoreFrontIDtoLineItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace SADL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<string>("OrderAddress")
@@ -84,7 +86,7 @@ namespace SADL.Migrations
                     b.Property<double>("OrderPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("StoreFrontID")
+                    b.Property<int?>("StoreFrontID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
@@ -103,7 +105,7 @@ namespace SADL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderID")
+                    b.Property<int?>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductID")
@@ -179,24 +181,18 @@ namespace SADL.Migrations
                 {
                     b.HasOne("SAModels.Customer", null)
                         .WithMany("CustomerOrders")
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.HasOne("SAModels.StoreFront", null)
                         .WithMany("StoreOrders")
-                        .HasForeignKey("StoreFrontID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StoreFrontID");
                 });
 
             modelBuilder.Entity("SAModels.OrderItem", b =>
                 {
                     b.HasOne("SAModels.Order", null)
                         .WithMany("OrderItems")
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OrderID");
 
                     b.HasOne("SAModels.Product", "Product")
                         .WithMany()
