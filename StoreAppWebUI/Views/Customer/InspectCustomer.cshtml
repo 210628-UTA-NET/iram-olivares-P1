@@ -1,4 +1,5 @@
-﻿@model StoreFrontVM
+﻿@model CustomerVM
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,39 +8,16 @@
 </head>
 <body>
     <h3>
-        @Model.StoreName
+        Welcome @Model.CustomerName!
     </h3>
 
-    <a>@Html.ActionLink("Replenish Inventory", "ReplenishInventory", new { p_storeID = Model.StoreFrontID }, new { @class = "btn btn-primary" })</a>
-    <a type="button" class="btn btn-secondary" asp-action="Index">Return to Store List</a>
-    <table class="table table-striped table-hover" style="position:relative; top: 15px">
-        <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Price/Unit</th>
-                <th>Available Quantity</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model.LineItems)
-            {
-                <tr>
-                    <td>@item.Product.ProductID</td>
-                    <td>@item.Product.ProductName</td>
-                    <td>@item.Product.ProductPrice</td>
-                    <td>@item.Quantity</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
+    <a>@Html.ActionLink("Place Order", "PlaceOrder", new { p_customerID = Model.CustomerID }, new { @class = "btn btn-primary" })</a>
+    <a type="button" class="btn btn-secondary" asp-action="Index">Return to Customer List</a>
+ 
     <table class="table table-striped table-hover" style="position:relative; top: 15px">
         <thead>
             <tr>
                 <th>Order ID</th>
-                <th>Customer ID</th>
                 <th>Total Cost</th>
                 <th>Order Address</th>
                 <th>Item List</th>
@@ -47,11 +25,10 @@
         </thead>
 
         <tbody>
-            @foreach (var order in Model.Orders)
+            @foreach (var order in Model.CustomerOrders)
             {
                 <tr>
                     <td>@order.OrderID</td>
-                    <td>@order.CustomerID</td>
                     <td>@order.OrderPrice</td>
                     <td>@order.OrderAddress</td>
                     <td>
@@ -97,6 +74,5 @@
 
         </tbody>
     </table>
-
 </body>
 </html>

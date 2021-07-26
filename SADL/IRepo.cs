@@ -24,7 +24,7 @@ namespace SADL
         /// </summary>
         /// <param name="p_customerEmail"> Takes an email string that will compare to all emails in the database </param>
         /// <returns> Will return a Customer if found, null otherwise </returns>
-        Customer GetOneCustomer(string p_customerEmail);
+        Customer GetOneCustomer(int p_customerID);
 
         /// <summary>
         /// Allows a Customer to place an order at the specified store

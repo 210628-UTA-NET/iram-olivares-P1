@@ -23,16 +23,30 @@ namespace SADL
             return p_customer;
         }
 
-        public Customer GetOneCustomer(string p_customerEmail)
+        public Customer GetOneCustomer(int p_customerID)
         {
-            return _context.Customers.FirstOrDefault(customer => customer.CustomerEmail == p_customerEmail);
+            return _context.Customers.Find(p_customerID);
         }
 
         public List<Order> GetCustomerOrders(int p_customerID)
         {
-            return _context.Orders
+            var orders = _context.Orders
                     .Where(order => order.CustomerID == p_customerID)
                     .Select(order => order).ToList();
+
+            foreach (Order order in orders)
+            {
+                order.OrderItems = _context.OrderItems
+                                    .Where(item => item.OrderID == order.OrderID)
+                                    .Select(item => item).ToList();
+                
+                foreach(OrderItem item in order.OrderItems)
+                {
+                    item.Product = this.GetOneItem(item.ProductID);
+                }
+            }
+
+            return orders;
         }
 
         public List<Order> GetStoreOrders(int p_storeID)
@@ -101,7 +115,7 @@ namespace SADL
         {
             var inventory = _context.LineItems
                     .Where(item => item.StoreFrontID == p_storeID)
-                    .Select(item => item).ToList();
+                    .Select(item => item).OrderBy(item => item.ProductID).ToList();
 
             foreach (LineItem item in inventory)
             {

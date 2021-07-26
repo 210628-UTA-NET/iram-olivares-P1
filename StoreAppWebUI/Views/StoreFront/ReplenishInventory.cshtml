@@ -21,10 +21,14 @@
                 </select>
                 <div>
                     <label for="amount">Amount to Add: </label>
-                    <input id="amount" type="number" name="p_amount" min="0" class="form-control">
+                    <input id="amount" type="number" name="p_amount" min="0" value="0" class="form-control">
                     <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
-                    <input type="submit" value="Submit">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
+            </form>
+            <form asp-action="InspectStore">
+                <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
+                <button type="submit" class="btn btn-danger">Return to Store Info</button>
             </form>
         </div>
     </div>

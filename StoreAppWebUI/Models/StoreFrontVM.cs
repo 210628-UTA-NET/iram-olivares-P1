@@ -19,9 +19,9 @@ namespace StoreAppWebUI.Models
 
         public int StoreFrontID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The Store Name field is required")]
         public string StoreName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "The Store Address field is required")]
         public string StoreAddress { get; set; }
         public List<LineItem> LineItems;
         public List<Order> Orders;

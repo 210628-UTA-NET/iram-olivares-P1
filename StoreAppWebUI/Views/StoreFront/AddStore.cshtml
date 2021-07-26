@@ -1,4 +1,4 @@
-﻿@model  StoreAppWebUI.Models.StoreFrontVM
+﻿@model  StoreFrontVM
 
 <!DOCTYPE html>
 <html>
@@ -14,12 +14,12 @@
             <div class="mb-3">
                 <label asp-for="StoreName" class="form-label">Store Name</label>
                 <input asp-for="StoreName" type="text" class="form-control">
-                <span asp-validation-for="StoreName" class="text-danger">The Store Name field is required.</span>
+                <span asp-validation-for="StoreName" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="StoreAddress" class="form-label">Store Address</label>
                 <input asp-for="StoreAddress" type="text" class="form-control">
-                <span asp-validation-for="StoreAddress" class="text-danger">The Store Address field is required.</span>
+                <span asp-validation-for="StoreAddress" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

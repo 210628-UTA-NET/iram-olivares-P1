@@ -1,0 +1,40 @@
+﻿@model CustomerVM
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h3>Add a Customer</h3>
+
+    <div>
+        <form asp-action="AddCustomer">
+            <div class="mb-3">
+                <label asp-for="CustomerName" class="form-label">Customer Name</label>
+                <input asp-for="CustomerName" type="text" class="form-control">
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CustomerEmail" class="form-label">Customer Email</label>
+                <input asp-for="CustomerEmail" type="email" class="form-control">
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CustomerAddress" class="form-label">Customer Address</label>
+                <input asp-for="CustomerAddress" type="text" class="form-control">
+                <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CustomerPhone" class="form-label">Customer Phone Number</label>
+                <input asp-for="CustomerPhone" type="tel" placeholder="10 Digit Number" title="10 Digit Phone Number" pattern="[0-9]{10}" class="form-control">
+                <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <a type="button" class="btn btn-danger" asp-action="Index" style="position:relative; top:15px">Return to Customer List</a>
+    </div>
+</body>
+</html>

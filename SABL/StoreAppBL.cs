@@ -23,9 +23,9 @@ namespace SABL
             return _repo.GetAllCustomers();
         }
 
-        public Customer GetOneCustomer(string p_customerEmail)
+        public Customer GetOneCustomer(int p_customerID)
         {
-            return _repo.GetOneCustomer(p_customerEmail);
+            return _repo.GetOneCustomer(p_customerID);
         }
 
         public List<Order> GetCustomerOrders(int p_customerID)
