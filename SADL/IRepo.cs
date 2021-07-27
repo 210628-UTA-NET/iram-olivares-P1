@@ -34,6 +34,8 @@ namespace SADL
         /// <returns> Returns the Order if successful, null otherwise </returns>
         Order PlaceOrder(Order p_order);
 
+        List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems);
+
         /// <summary>
         /// Allows user to view a Customer's orders
         /// </summary>

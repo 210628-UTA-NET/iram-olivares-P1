@@ -43,6 +43,11 @@ namespace SABL
             return _repo.PlaceOrder(p_order);
         }
 
+        public List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems)
+        {
+            return _repo.AddOrderItemsToList(p_orderItems);
+        }
+
         public List<StoreFront> GetAllStores()
         {
             return _repo.GetAllStores();

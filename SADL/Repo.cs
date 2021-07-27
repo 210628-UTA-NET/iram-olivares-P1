@@ -67,9 +67,26 @@ namespace SADL
 
         public Order PlaceOrder(Order p_order)
         {
+            foreach(OrderItem item in p_order.OrderItems)
+            {
+                item.Product = null;
+                item.OrderID = p_order.OrderID;
+                _context.OrderItems.Add(item);
+            }
             _context.Orders.Add(p_order);
             _context.SaveChanges();
             return p_order;
+        }
+
+        public List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems)
+        {
+            foreach(OrderItem item in p_orderItems)
+            {
+                item.Product = null;
+                _context.OrderItems.Add(item);
+            }
+            _context.SaveChanges();
+            return p_orderItems;
         }
 
         public List<StoreFront> GetAllStores()

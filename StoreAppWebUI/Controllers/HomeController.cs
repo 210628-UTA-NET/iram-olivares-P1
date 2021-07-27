@@ -20,6 +20,7 @@ namespace StoreAppWebUI.Controllers
 
         public IActionResult Index()
         {
+            TempData.Clear();
             return View();
         }
 

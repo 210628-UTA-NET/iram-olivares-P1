@@ -1,0 +1,83 @@
+﻿@model Tuple<List<StoreFrontVM>, StoreFrontVM, CustomerVM>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h2>Place an Order for @Model.Item3.CustomerName</h2>
+
+    <div>
+        <div>
+            <form asp-action="AddToOrder">
+                <label for="store">Select Store: </label>
+                <select id="store" name="p_storeID">
+                    @foreach (var store in Model.Item1)
+                    {
+                        <option value="@store.StoreFrontID">@store.StoreName</option>
+                    }
+                </select>
+                <input name="p_customerID" type="hidden" asp-for="@Model.Item3.CustomerID" value="@Model.Item3.CustomerID">
+            </form> 
+        </div>
+        <div>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    @Model.Item2.StoreName's Inventory
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Price/Unit</th>
+                                        <th>Available Stock</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.Item2.LineItems)
+                                    {
+                                        <tr>
+                                            <td>@item.Product.ProductName</td>
+                                            <td>@item.Product.ProductPrice</td>
+                                            <td>@item.Quantity</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                // Returns p_storeID, p_customerID, p_itemID
+                // These parameters determine which item to add to a customer's order and which store to check against
+                <form asp-action="AddToOrder">
+                    <label for="item">Select Item to Order:</label>
+                    <select id="item" name="p_itemID">
+                        @foreach (var item in Model.Item2.LineItems)
+                        {
+                            <option value="@item.LineItemID">@item.Product.ProductName - @item.Quantity Available</option>
+                        }
+                    </select>
+                    <div>
+                        <label for="amount">Quantity: </label>
+                        <input id="amount" type="number" name="p_amount" min="0" value="0" class="form-control">
+                        <input name="p_storeID" type="hidden" asp-for="@Model.Item2.StoreFrontID" value="@Model.Item2.StoreFrontID">
+                        <input name="p_customerID" type="hidden" asp-for="@Model.Item3.CustomerID" value="@Model.Item3.CustomerID">
+                        <button type="submit" class="btn btn-primary">Add to Order</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</body>
+</html>

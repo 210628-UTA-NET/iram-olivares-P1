@@ -11,7 +11,7 @@
 
     <div>
         <div>
-            <form asp-action="AddAmount">
+            <form asp-action="ReplenishInventory">
                 <label for="item">Select Item to Replenish:</label>
                 <select id="item" name="p_itemID">
                     @foreach (var item in Model.LineItems)
