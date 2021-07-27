@@ -20,6 +20,16 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore 
     - name: Build
-      run: dotnet build  --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test  --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal
+
+    - name: publish
+      run: dotnet publish StoreAppWebUI/ --configuration Release -o ./publish
+      
+    - name: deploy
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: tortilla-emporium # Replace with your app name
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
+        package: ./publish
