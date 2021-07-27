@@ -310,12 +310,12 @@ namespace SATest
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                string findMe = "222@customer.com";
+                int findMe = 2;
 
                 Customer foundMe = repo.GetOneCustomer(findMe);
 
                 Assert.NotNull(foundMe);
-                Assert.Equal(foundMe.CustomerEmail, findMe);
+                Assert.Equal(foundMe.CustomerID, findMe);
             }
         }
 
@@ -335,7 +335,7 @@ namespace SATest
 
                 Customer addedMe = repo.AddCustomer(newCustomer);
 
-                Assert.Equal(addedMe, repo.GetOneCustomer(newCustomer.CustomerEmail));
+                Assert.Equal(addedMe, repo.GetOneCustomer(3));
             }
         }
 
@@ -361,11 +361,11 @@ namespace SATest
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                string getCustomerEmail = "222@customer.com";
+                int getCustomerID = 2;
                 Customer getCustomer;
                 List<Order> customerOrders;
 
-                getCustomer = repo.GetOneCustomer(getCustomerEmail);
+                getCustomer = repo.GetOneCustomer(getCustomerID);
                 customerOrders = repo.GetCustomerOrders(getCustomer.CustomerID);
 
                 Assert.NotNull(customerOrders);
