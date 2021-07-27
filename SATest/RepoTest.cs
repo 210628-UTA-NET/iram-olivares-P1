@@ -387,23 +387,13 @@ namespace SATest
                     {
                         new OrderItem
                         {
-                            Product = new Product()
-                            {
-                                ProductName = "Tortilla #2",
-                                ProductPrice = 2.22,
-                                ProductDescription = "2 Tortillas"
-                            },
+                        ProductID = 2,
                         Quantity = 20,
                         },
                         new OrderItem
                         {
-                            Product = new Product()
-                            {
-                                ProductName = "Tortilla #1",
-                                ProductPrice = 1.11,
-                                ProductDescription = "1 Tortilla"
-                            },
                         Quantity = 10,
+                        ProductID = 1
                         }
                     }
                 };
