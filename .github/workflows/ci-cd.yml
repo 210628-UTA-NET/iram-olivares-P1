@@ -23,6 +23,21 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      
+      uses: highbyte/sonarscan-dotnet@v2.1.1-beta
+      with:
+        # The key of the SonarQube project
+        sonarProjectKey: 210628-UTA-NET_iram-olivares-P1
+        # The name of the SonarQube project
+        sonarProjectName: iram-olivares-P1
+        sonarOrganization: 210628-uta-net
+        dotnetBuildArguments: ./
+        dotnetTestArguments: ./ --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        # Optional extra command arguments the the SonarScanner 'begin' command
+        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: publish
       run: dotnet publish StoreAppWebUI/ --configuration Release -o ./publish
