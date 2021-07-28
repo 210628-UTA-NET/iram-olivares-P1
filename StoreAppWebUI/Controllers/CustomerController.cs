@@ -70,6 +70,7 @@ namespace StoreAppWebUI.Controllers
         {
             List<StoreFrontVM> stores = _storeAppBL.GetAllStores().Select(store => new StoreFrontVM(store)).ToList();
             ViewData["customerID"] = p_customerID;
+            TempData.Clear();
             return View(stores);
         }
 

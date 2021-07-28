@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th>Order ID</th>
-                <th>Total Cost</th>
                 <th>Order Address</th>
+                <th>Total Cost</th>
                 <th>Item List</th>
             </tr>
         </thead>
@@ -27,49 +27,49 @@
         <tbody>
             @foreach (var order in Model.CustomerOrders)
             {
-                <tr>
-                    <td>@order.OrderID</td>
-                    <td>@order.OrderPrice</td>
-                    <td>@order.OrderAddress</td>
-                    <td>
-                        <div id="accordion">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                            List of Items
-                                        </button>
-                                    </h5>
-                                </div>
+            <tr>
+                <td>@order.OrderID</td>
+                <td>@order.OrderAddress</td>
+                <td>@order.OrderPrice.ToString("C")</td>
+                <td>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Show/Hide Items
+                                    </button>
+                                </h5>
+                            </div>
 
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <table class="table table-striped table-hover">
-                                        <thead>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Item ID</th>
+                                            <th>Item Name</th>
+                                            <th>Price/Unit</th>
+                                            <th>Amount Purchased</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in order.OrderItems)
+                                        {
                                             <tr>
-                                                <th>Item ID</th>
-                                                <th>Item Name</th>
-                                                <th>Price/Unit</th>
-                                                <th>Amount Purchased</th>
+                                                <td>@item.OrderItemID</td>
+                                                <td>@item.Product.ProductName</td>
+                                                <td>@item.Product.ProductPrice.ToString("C")</td>
+                                                <td>@item.Quantity</td>
                                             </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            @foreach (var item in order.OrderItems)
-                                            {
-                                                <tr>
-                                                    <td>@item.OrderItemID</td>
-                                                    <td>@item.Product.ProductName</td>
-                                                    <td>@item.Product.ProductPrice</td>
-                                                    <td>@item.Quantity</td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </td>
-                </tr>
+                    </div>
+                </td>
+            </tr>
             }
 
         </tbody>

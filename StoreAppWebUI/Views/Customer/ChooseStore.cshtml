@@ -17,7 +17,10 @@
             }
         </select>
         <input name="p_customerID" type="hidden" asp-for="@ViewData["customerID"]" value="@ViewData["customerID"]">
-        <button type="submit" class="btn btn-secondary">Select</button>
+        <button type="submit" class="btn btn-primary">Select</button>
     </form>
+
+    @Html.ActionLink("Return", "InspectCustomer", new { p_customerID = @ViewData["customerID"] }, new { @class = "btn btn-secondary" })
+
 </body>
 </html>

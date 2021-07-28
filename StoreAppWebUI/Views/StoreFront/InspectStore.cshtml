@@ -28,7 +28,7 @@
                 <tr>
                     <td>@item.Product.ProductID</td>
                     <td>@item.Product.ProductName</td>
-                    <td>@item.Product.ProductPrice</td>
+                    <td>@item.Product.ProductPrice.ToString("C")</td>
                     <td>@item.Quantity</td>
                 </tr>
             }
@@ -52,7 +52,7 @@
                 <tr>
                     <td>@order.OrderID</td>
                     <td>@order.CustomerID</td>
-                    <td>@order.OrderPrice</td>
+                    <td>@order.OrderPrice.ToString("C")</td>
                     <td>@order.OrderAddress</td>
                     <td>
                         <div id="accordion">
@@ -82,7 +82,7 @@
                                                 <tr>
                                                     <td>@item.OrderItemID</td>
                                                     <td>@item.Product.ProductName</td>
-                                                    <td>@item.Product.ProductPrice</td>
+                                                    <td>@item.Product.ProductPrice.ToString("C")</td>
                                                     <td>@item.Quantity</td>
                                                 </tr>
                                             }
