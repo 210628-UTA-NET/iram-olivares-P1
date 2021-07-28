@@ -12,7 +12,7 @@ namespace StoreAppWebUI.Controllers
 {
     public class CustomerController : Controller
     {
-        private IStoreAppBL _storeAppBL;
+        private readonly IStoreAppBL _storeAppBL;
         public CustomerController(IStoreAppBL p_storeAppBL)
         {
             _storeAppBL = p_storeAppBL;
@@ -164,7 +164,7 @@ namespace StoreAppWebUI.Controllers
         {
             OrderVM cart = JsonConvert.DeserializeObject<OrderVM>(TempData["cart"].ToString());
 
-            Order checkout = new Order()
+            Order cartFix = new Order()
             {
                 OrderAddress = cart.OrderAddress,
                 OrderPrice = cart.OrderPrice,
@@ -173,7 +173,7 @@ namespace StoreAppWebUI.Controllers
                 OrderItems = cart.OrderItems
             };
 
-            checkout = _storeAppBL.PlaceOrder(checkout);
+            Order checkout = _storeAppBL.PlaceOrder(cartFix);
 
             return RedirectToAction(nameof(InspectCustomer), new { p_customerID = cart.CustomerID });
         }

@@ -6,7 +6,7 @@ namespace SABL
 {
     public class StoreAppBL : IStoreAppBL
     {
-        private IRepo _repo;
+        private readonly IRepo _repo;
 
         public StoreAppBL(IRepo p_repo)
         {

@@ -20,29 +20,29 @@ namespace SADL
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<StoreFront> Stores { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder p_modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            p_modelBuilder.Entity<Customer>()
+            modelBuilder.Entity<Customer>()
                 .Property(customer => customer.CustomerID)
                 .ValueGeneratedOnAdd();
 
-            p_modelBuilder.Entity<Product>()
+            modelBuilder.Entity<Product>()
                 .Property(product => product.ProductID)
                 .ValueGeneratedOnAdd();
 
-            p_modelBuilder.Entity<StoreFront>()
+            modelBuilder.Entity<StoreFront>()
                 .Property(store => store.StoreFrontID)
                 .ValueGeneratedOnAdd();
 
-            p_modelBuilder.Entity<Order>()
+            modelBuilder.Entity<Order>()
                 .Property(order => order.OrderID)
                 .ValueGeneratedOnAdd();    
 
-            p_modelBuilder.Entity<LineItem>()
+            modelBuilder.Entity<LineItem>()
                 .Property(item => item.LineItemID)
                 .ValueGeneratedOnAdd();
 
-            p_modelBuilder.Entity<OrderItem>()
+            modelBuilder.Entity<OrderItem>()
                 .Property(item => item.OrderItemID)
                 .ValueGeneratedOnAdd();
         }

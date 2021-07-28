@@ -11,7 +11,7 @@ namespace StoreAppWebUI.Controllers
 {
     public class StoreFrontController : Controller
     {
-        private IStoreAppBL _storeAppBL;
+        private readonly IStoreAppBL _storeAppBL;
         public StoreFrontController(IStoreAppBL p_storeAppBL)
         {
             _storeAppBL = p_storeAppBL;
@@ -74,7 +74,7 @@ namespace StoreAppWebUI.Controllers
         [HttpPost]
         public IActionResult ReplenishInventory(int p_storeID, int p_itemID, int p_amount)
         {
-            LineItem replenishedItem = _storeAppBL.ReplenishInventory(p_itemID, p_amount);
+            _storeAppBL.ReplenishInventory(p_itemID, p_amount);
             return RedirectToAction(nameof(ReplenishInventory), new { p_storeID });
         }
     }

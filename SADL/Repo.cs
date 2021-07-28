@@ -6,7 +6,7 @@ namespace SADL
 {
     public class Repo : IRepo
     {
-        private StoreAppDBContext _context;
+        private readonly StoreAppDBContext _context;
         public Repo(StoreAppDBContext p_context)
         {
             _context = p_context;
