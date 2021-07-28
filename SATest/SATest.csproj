@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SADL\SADL.csproj" />
+    <ProjectReference Include="..\SABL\SABL.csproj" />
+    <ProjectReference Include="..\StoreAppWebUI\StoreAppWebUI.csproj" />
   </ItemGroup>
 
 </Project>

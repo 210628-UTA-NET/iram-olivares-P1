@@ -211,13 +211,15 @@ namespace SATest
             }
         }
 
-        [Fact]
-        public void GetOneStoreTest()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void GetOneStoreTest(int p_ID)
         {
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                int findMe = 2;
+                int findMe = p_ID;
 
                 StoreFront foundMe = repo.GetOneStore(findMe);
 
@@ -226,13 +228,15 @@ namespace SATest
             }
         }
 
-        [Fact]
-        public void ViewInventoryTest()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void ViewInventoryTest(int p_ID)
         {
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                int getStoreID = 1;
+                int getStoreID = p_ID;
                 List<LineItem> inventory;
 
                 inventory = repo.ViewInventory(getStoreID);
@@ -242,13 +246,14 @@ namespace SATest
             }
         }
 
-        [Fact]
-        public void GetOneItemTest()
+        [Theory]
+        [InlineData(4)]
+        public void GetOneItemTest(int p_ID)
         {
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                int itemID = 4;
+                int itemID = p_ID;
 
                 Product foundItem = repo.GetOneItem(itemID);
 
@@ -256,14 +261,17 @@ namespace SATest
             }
         }
 
-        [Fact]
-        public void ReplenishInventoryTest()
+        [Theory]
+        [InlineData(1, 1000)]
+        [InlineData(2, 900)]
+        [InlineData(3, 800)]
+        public void ReplenishInventoryTest(int p_ID, int p_amount)
         {
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                int itemID = 1;
-                int amount = 1000;
+                int itemID = p_ID;
+                int amount = p_amount;
 
                 LineItem replenishedItem = repo.ReplenishInventory(itemID, amount);
 
@@ -304,13 +312,15 @@ namespace SATest
                 Assert.Equal(2, customers.Count);
             }
         }
-        [Fact]
-        public void GetOneCustomerTest()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void GetOneCustomerTest(int p_ID)
         {
             using (var context = new StoreAppDBContext(_options))
             {
                 IRepo repo = new Repo(context);
-                int findMe = 2;
+                int findMe = p_ID;
 
                 Customer foundMe = repo.GetOneCustomer(findMe);
 
