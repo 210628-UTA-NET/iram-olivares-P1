@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using StoreAppWebUI.Models;
 
 namespace StoreAppWebUI.Controllers
@@ -21,11 +22,14 @@ namespace StoreAppWebUI.Controllers
         public IActionResult Index()
         {
             TempData.Clear();
+            Log.Information("Home Page Visited");
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            Log.Information("Privacy Page Visited - There is Nothing Here!");
             return View();
         }
 
