@@ -78,17 +78,6 @@ namespace SADL
             return p_order;
         }
 
-        public List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems)
-        {
-            foreach(OrderItem item in p_orderItems)
-            {
-                item.Product = null;
-                _context.OrderItems.Add(item);
-            }
-            _context.SaveChanges();
-            return p_orderItems;
-        }
-
         public List<StoreFront> GetAllStores()
         {
             return _context.Stores.Select(store => store).ToList();
@@ -140,13 +129,6 @@ namespace SADL
             }
             
             return inventory;
-        }
-
-        public Product AddProduct(Product p_product)
-        {
-            _context.Products.Add(p_product);
-            _context.SaveChanges();
-            return p_product;
         }
     }
 }

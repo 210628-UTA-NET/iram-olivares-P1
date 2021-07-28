@@ -43,11 +43,6 @@ namespace SABL
             return _repo.PlaceOrder(p_order);
         }
 
-        public List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems)
-        {
-            return _repo.AddOrderItemsToList(p_orderItems);
-        }
-
         public List<StoreFront> GetAllStores()
         {
             return _repo.GetAllStores();
@@ -80,11 +75,6 @@ namespace SABL
         public List<LineItem> ViewInventory(int p_storeID)
         {
             return _repo.ViewInventory(p_storeID);
-        }
-
-        public Product AddProduct(Product p_product)
-        {
-            return _repo.AddProduct(p_product);
         }
     }
 }

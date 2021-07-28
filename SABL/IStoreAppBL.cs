@@ -34,8 +34,6 @@ namespace SABL
         /// <returns> Returns the Order if successful, null otherwise </returns>
         Order PlaceOrder(Order p_order);
 
-        List<OrderItem> AddOrderItemsToList(List<OrderItem> p_orderItems);
-
         /// <summary>
         /// Allows user to view a Customer's orders
         /// </summary>
@@ -100,12 +98,5 @@ namespace SABL
         /// <param name="p_item"> Takes in a line item as an input </param>
         /// <returns> Returns the item price in double format </returns>
         double GetProductPrice(int p_productID);
-
-        /// <summary>
-        /// Add a product to the database
-        /// </summary>
-        /// <param name="p_product"> Product to be added </param>
-        /// <returns> Returns the newly added product </returns>
-        Product AddProduct(Product p_product);
     }
 }
