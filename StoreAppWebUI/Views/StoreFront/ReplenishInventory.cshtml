@@ -10,26 +10,33 @@
     <h3>Replenish Inventory for @Model.StoreName</h3>
 
     <div>
-        <div>
+        <div style="padding-top:30px">
             <form asp-action="ReplenishInventory">
-                <label for="item">Select Item to Replenish:</label>
-                <select id="item" name="p_itemID">
-                    @foreach (var item in Model.LineItems)
-                    {
-                        <option value="@item.LineItemID">@item.Product.ProductName - @item.Quantity Available</option>
-                    }
-                </select>
+                <label for="item" style="font:bold 20px arial">Select Item to Replenish:</label>
                 <div>
-                    <label for="amount">Amount to Add: </label>
-                    <input id="amount" type="number" name="p_amount" min="0" value="0" class="form-control">
-                    <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <select id="item" name="p_itemID">
+                        @foreach (var item in Model.LineItems)
+                        {
+                            <option value="@item.LineItemID">@item.Product.ProductName - @item.Quantity Available</option>
+                        }
+                    </select>
+                </div>
+                
+                <div style="padding-top:30px">
+                    <label for="amount" style="font:bold 20px arial">Amount to Add: </label>
+                    <input id="amount" type="number" name="p_amount" min="0" value="0" class="form-control" style="width:200px">
+                    <div style="padding-top:20px">
+                        <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:150px">Submit</button>
                 </div>
             </form>
-            <form asp-action="InspectStore">
-                <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
-                <button type="submit" class="btn btn-danger">Return to Store Info</button>
-            </form>
+            <div style="padding-top:20px">
+                <form asp-action="InspectStore">
+                    <input name="p_storeID" type="hidden" asp-for="@Model.StoreFrontID" value="@Model.StoreFrontID">
+                    <button type="submit" class="btn btn-danger" style="width:150px">Return</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div style="display:inline-block; padding-right:10px">
+        <img style="width:500px; height:500px; border-style:solid" src="https://www.seriouseats.com/thmb/i9ui5l53SaEgAsFsVijh7A5qFhM=/1500x844/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2020__10__20201029-northern-mexican-style-tortillas-jillian-atkinson-1-2-d3070b3723b14403a402ec489cf846fb.jpg"/>
+        <p class="text-center">
+            <a type="button" class="btn btn-primary" asp-controller="StoreFront" asp-action="Index" style="position:relative; width:500px; top:15px">View Store Portal</a>
+        </p>
+    </div>
+
+    <div style="display:inline-block; padding-left:10px">
+        <img style="width:500px; height:500px; border-style:solid" src="https://assets.epicurious.com/photos/5adf4313067e432ad8423d55/16:9/w_2560%2Cc_limit/tortilla-taste-test-hero-11042018.jpg"/>
+        <p class="text-center">
+            <a type="button" class="btn btn-primary" asp-controller="Customer" asp-action="Index" style="position:relative; width:500px; top:15px">View Customer Portal</a>
+        </p>
+    </div>
+
+    <div>
+        <p style="font:bold 40px arial; padding-top:50px">
+            Quote of The Day:
+        </p>
+    </div>
+
+    <div>
+        <p style="font:bold italic 30px arial; color:grey">
+            If a tortilla can rise up, then so can you. - Anonymous, 2021
+        </p>
+    </div>
+</body>
+</html>

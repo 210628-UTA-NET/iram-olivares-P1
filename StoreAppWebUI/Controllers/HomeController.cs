@@ -27,12 +27,6 @@ namespace StoreAppWebUI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            Log.Information("Privacy Page Visited - There is Nothing Here!");
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
