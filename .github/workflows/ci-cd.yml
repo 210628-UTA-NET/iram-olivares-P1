@@ -23,6 +23,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      
     - name: Code Analysis
       uses: highbyte/sonarscan-dotnet@v2.1.1-beta
       with:
