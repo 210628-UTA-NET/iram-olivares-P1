@@ -20,22 +20,22 @@ Feature To-Do List:
 * Fix a bug related to the store inventory list not being able to connect to the database
 
 ## Technologies Used
-# Frontend
+Frontend:
 * ASP.NET MVC
 * HTML5
 * CSS3
 
-# Backend
+Backend:
 * C# Programming
 * Microsoft SQL Server Database
 * ADO.NET Entity Framework
 
-# Testing and Logging
+Testing and Logging:
 * Xunit
 * Serilog
 * SonarCloud
 
-# DevOps
+DevOps:
 * GitHub Actions
 * Azure App Services
 * Azure Database
